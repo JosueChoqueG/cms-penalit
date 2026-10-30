@@ -18,13 +18,21 @@ jobs:
         php-version: '8.3'
         tools: composer:v2
 
+    - name: 📂 Create storage directories
+      run: |
+        mkdir -p storage/framework/views
+        mkdir -p storage/framework/cache/data
+        mkdir -p storage/framework/sessions
+        mkdir -p bootstrap/cache
+
     - name: 📦 Install Dependencies
       run: composer install --no-dev --optimize-autoloader --no-interaction
 
-    - name: 🗜️ Compile Assets (Si usas Vite/NPM)
-      run: |
-        npm install
-        npm run build
+    # Si usas NPM/Vite para tus estilos (Tailwind, etc.), descomenta estas líneas:
+    # - name: 🗜️ Compile Assets
+    #   run: |
+    #     npm install
+    #     npm run build
 
     - name: 🚀 Sync files to Hostinger via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -34,9 +42,10 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
         server-dir: /public_html/
-        # ESTO ES VITAL: Evita que borre tus carpetas generadas o archivos de config
+        # Excluimos archivos que no deben sobreescribirse en el servidor
         exclude: |
           **/.git*
           **/.git*/**
           **/.env
           **/storage/**
+          **/node_modules/**
