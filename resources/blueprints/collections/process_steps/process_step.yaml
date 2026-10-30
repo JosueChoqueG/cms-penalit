@@ -1,0 +1,28 @@
+title: 'Paso del Proceso'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: 'Título del paso'
+      required: true
+  -
+    handle: description
+    field:
+      type: textarea
+      display: 'Descripción del paso'
+      required: true
+  -
+    handle: icon_class
+    field:
+      type: text
+      display: 'Clase CSS del ícono'
+      instructions: 'Clase del ícono icomoon. Ej: icon-controlxpert_svgrepocom'
+      required: true
+  -
+    handle: wow_delay
+    field:
+      type: text
+      display: 'Delay animación (ms)'
+      instructions: 'Ej: 0ms, 150ms, 300ms, 450ms'
+      default: '0ms'

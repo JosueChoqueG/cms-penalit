@@ -1,0 +1,106 @@
+{{ partial:header }}
+
+<section class="page-title" style="background-image:url(/assets/images/background/page-title.jpg)">
+    <div class="auto-container">
+        <h1 class="page-title_heading">
+            {{ if get:categoria }}
+                {{ taxonomy:book_categories :slug:is="get:categoria" }}{{ title }}{{ /taxonomy:book_categories }}
+            {{ else }}
+                Biblioteca Jurídica Digital
+            {{ /if }}
+        </h1>
+        <ul class="page-breadcrumb">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/libros">Biblioteca Digital</a></li>
+            {{ if get:categoria }}
+                {{ taxonomy:book_categories :slug:is="get:categoria" }}
+                    <li>{{ title }}</li>
+                {{ /taxonomy:book_categories }}
+            {{ /if }}
+        </ul>
+    </div>
+</section>
+
+<!-- Library Digital Section -->
+<section class="py-5" style="background-color: #f8fafc;">
+    <div class="auto-container">
+        <div class="sec-title text-center mb-4">
+            <span class="sub-title text-uppercase fw-bold" style="color: var(--primary-red); font-size: 13px;">Acceso Académico Exclusivo</span>
+            <h2 class="sec-title_heading mt-2" style="color: var(--primary-blue);">
+                {{ if get:categoria }}
+                    Libros de {{ taxonomy:book_categories :slug:is="get:categoria" }}{{ title }}{{ /taxonomy:book_categories }}
+                {{ else }}
+                    Libros, Diccionarios y Modelos de Escritos
+                {{ /if }}
+            </h2>
+            <p class="text-muted mx-auto" style="max-width: 650px;">
+                Descarga material jurídico en formato PDF y plantillas editables en Word para litigación penal y constitucional.
+            </p>
+        </div>
+
+        <!-- Categorías Pills / Tabs -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+            <a href="/libros" class="btn btn-sm rounded-pill px-3 py-2 fw-bold {{ if !get:categoria }}text-white shadow-sm{{ else }}bg-white text-dark border{{ /if }}" style="{{ if !get:categoria }}background-color: var(--primary-blue); border-color: var(--primary-blue);{{ else }}border-color: #dee2e6;{{ /if }}">
+                <i class="fa-solid fa-layer-group me-1"></i> Todos
+            </a>
+            {{ taxonomy:book_categories sort="order" }}
+            <a href="/libros?categoria={{ slug }}" class="btn btn-sm rounded-pill px-3 py-2 fw-bold {{ if get:categoria == slug }}text-white shadow-sm{{ else }}bg-white text-dark border{{ /if }}" style="{{ if get:categoria == slug }}background-color: var(--primary-blue); border-color: var(--primary-blue);{{ else }}border-color: #dee2e6;{{ /if }}">
+                {{ title }}
+            </a>
+            {{ /taxonomy:book_categories }}
+        </div>
+
+        {{ if get:categoria }}
+        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
+            <div class="d-flex align-items-center gap-2">
+                <span class="text-muted small">Mostrando categoría:</span>
+                {{ taxonomy:book_categories :slug:is="get:categoria" }}
+                <span class="badge rounded-pill px-3 py-2" style="background-color: var(--primary-red); font-size: 13px;">
+                    <i class="fa-solid fa-bookmark me-1"></i> {{ title }}
+                </span>
+                {{ /taxonomy:book_categories }}
+            </div>
+            <a href="/libros" class="btn btn-sm btn-outline-secondary">
+                <i class="fa-solid fa-rotate-left me-1"></i> Ver todos los libros
+            </a>
+        </div>
+        {{ /if }}
+
+        <div class="row g-4">
+            {{ if get:categoria }}
+                {{ collection:library_books :taxonomy:book_categories="get:categoria" sort="order" }}
+                    {{ partial:pages/components/book_card }}
+                    {{ if no_results }}
+                    <div class="col-12 text-center py-5">
+                        <div class="p-5 bg-white rounded-4 shadow-sm border mx-auto" style="max-width: 650px;">
+                            <div class="mb-3 text-warning">
+                                <i class="fa-solid fa-book-open-reader fa-3x" style="opacity: 0.6;"></i>
+                            </div>
+                            <h4 class="fw-bold" style="color: var(--primary-blue);">
+                                Próximamente títulos en {{ taxonomy:book_categories :slug:is="get:categoria" }}{{ title }}{{ /taxonomy:book_categories }}
+                            </h4>
+                            <p class="text-muted mt-2 mb-4">
+                                Actualmente estamos preparando y digitalizando material exclusivo para esta área. Si necesitas un texto, doctrina o formato específico para litigación, contáctanos de inmediato.
+                            </p>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                <a href="/libros" class="btn btn-outline-secondary px-4 fw-bold">
+                                    <i class="fa-solid fa-layer-group me-1"></i> Ver todos los libros
+                                </a>
+                                <a href="{{ global:site_settings:whatsapp_float_url }}" target="_blank" class="btn btn-success px-4 fw-bold">
+                                    <i class="fa-brands fa-whatsapp me-1"></i> Solicitar por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {{ /if }}
+                {{ /collection:library_books }}
+            {{ else }}
+                {{ collection:library_books sort="order" }}
+                    {{ partial:pages/components/book_card }}
+                {{ /collection:library_books }}
+            {{ /if }}
+        </div>
+    </div>
+</section>
+
+{{ partial:footer }}

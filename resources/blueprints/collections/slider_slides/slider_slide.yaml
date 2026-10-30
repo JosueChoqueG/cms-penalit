@@ -1,0 +1,46 @@
+title: 'Slide Hero'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: 'Subtítulo (línea principal)'
+              instructions: 'Texto grande principal del slide. Ej: Derecho procesal constitucional'
+              validate:
+                - required
+          -
+            handle: video_url
+            field:
+              type: text
+              display: 'URL del video de fondo'
+              instructions: 'Ruta relativa o URL del video MP4 de fondo. Ej: /assets/videos/videouno.mp4'
+              required: false
+          -
+            handle: button_text
+            field:
+              type: text
+              display: 'Texto del botón'
+              default: 'Más información'
+          -
+            handle: button_url
+            field:
+              type: text
+              display: 'URL del botón'
+              default: /capacitacion
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

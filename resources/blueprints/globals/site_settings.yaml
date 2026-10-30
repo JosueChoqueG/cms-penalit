@@ -1,0 +1,112 @@
+title: 'Configuración del Sitio'
+fields:
+  -
+    handle: contact_section
+    field:
+      type: section
+      display: '📍 Datos de Contacto'
+  -
+    handle: address
+    field:
+      type: text
+      display: 'Dirección'
+      default: 'Abancay - Apurímac, Perú.'
+  -
+    handle: phone
+    field:
+      type: text
+      display: 'Teléfono'
+      default: '914 159 947'
+  -
+    handle: phone_href
+    field:
+      type: text
+      display: 'Teléfono (href sin espacios)'
+      default: '914159947'
+  -
+    handle: email
+    field:
+      type: text
+      display: 'Correo Electrónico'
+      default: 'corporacionjuridicapenalito@gmail.com'
+  -
+    handle: social_section
+    field:
+      type: section
+      display: '📱 Redes Sociales'
+  -
+    handle: facebook_url
+    field:
+      type: text
+      display: 'URL Facebook'
+      default: 'https://www.facebook.com/profile.php?id=100051148966458'
+  -
+    handle: tiktok_url
+    field:
+      type: text
+      display: 'URL TikTok'
+      default: 'https://www.tiktok.com/@corp.jurid.penalito'
+  -
+    handle: linkedin_url
+    field:
+      type: text
+      display: 'URL LinkedIn'
+      default: 'https://www.linkedin.com/'
+  -
+    handle: youtube_url
+    field:
+      type: text
+      display: 'URL YouTube'
+      default: 'https://www.youtube.com/@rogertquispealegria831'
+  -
+    handle: whatsapp_url
+    field:
+      type: text
+      display: 'URL WhatsApp (grupo)'
+      default: 'https://chat.whatsapp.com/JjsnVL71fd7Hpo6yB7LEIg'
+  -
+    handle: whatsapp_float_url
+    field:
+      type: text
+      display: 'URL WhatsApp flotante (mensaje directo)'
+      instructions: 'URL con mensaje preescrito. Ej: https://wa.me/51997370339?text=...'
+      default: 'https://wa.me/51997370339?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n'
+  -
+    handle: whatsapp_channel_url
+    field:
+      type: text
+      display: 'URL Canal Académico de WhatsApp'
+      default: 'https://whatsapp.com/channel/0029VbDOazEBfxo7OIkrKf3y'
+  -
+    handle: popup_section
+    field:
+      type: section
+      display: '🖼️ Configuración del Popup'
+  -
+    handle: show_popup
+    field:
+      type: toggle
+      display: 'Mostrar popup al cargar'
+      default: true
+  -
+    handle: header_section
+    field:
+      type: section
+      display: '🏷️ Texto del Header Top'
+  -
+    handle: header_location_text
+    field:
+      type: text
+      display: 'Texto de ubicación'
+      default: '¡Encuéntranos ahora! Abancay - Apurímac'
+  -
+    handle: footer_section
+    field:
+      type: section
+      display: '🔻 Footer'
+  -
+    handle: copyright_year
+    field:
+      type: text
+      display: 'Año del copyright'
+      default: '2026'

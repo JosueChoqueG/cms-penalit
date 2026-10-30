@@ -1,0 +1,36 @@
+title: 'Artículo del Blog'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: 'Título del artículo'
+      required: true
+  -
+    handle: author
+    field:
+      type: text
+      display: 'Autor'
+      default: 'Equipo CJP'
+  -
+    handle: featured_image
+    field:
+      type: assets
+      display: 'Imagen destacada'
+      max_files: 1
+  -
+    handle: excerpt
+    field:
+      type: textarea
+      display: 'Extracto / Resumen'
+  -
+    handle: content
+    field:
+      type: bard
+      display: 'Contenido completo'
+  -
+    handle: comments_count
+    field:
+      type: integer
+      display: 'Número de comentarios'
+      default: 0

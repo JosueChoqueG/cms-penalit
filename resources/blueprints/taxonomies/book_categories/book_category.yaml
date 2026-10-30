@@ -1,0 +1,8 @@
+title: 'Categoría de Libros'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Título
+      required: true

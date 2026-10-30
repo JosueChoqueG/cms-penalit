@@ -1,0 +1,22 @@
+title: 'Slide de Popup'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: 'Nombre del evento (alt/referencia)'
+      required: true
+  -
+    handle: image
+    field:
+      type: assets
+      display: 'Imagen del Flyer'
+      instructions: 'Imagen JPEG o PNG del flyer del evento'
+      max_files: 1
+      required: true
+  -
+    handle: whatsapp_url
+    field:
+      type: text
+      display: 'URL del Canal Académico de WhatsApp'
+      instructions: 'Enlace al canal de WhatsApp que se muestra en el popup'

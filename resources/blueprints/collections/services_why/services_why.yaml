@@ -1,0 +1,21 @@
+title: 'Ventaja / ¿Por qué elegirnos?'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: 'Título de la ventaja'
+      required: true
+  -
+    handle: description
+    field:
+      type: textarea
+      display: 'Descripción'
+      required: true
+  -
+    handle: icon_class
+    field:
+      type: text
+      display: 'Clase CSS del ícono'
+      instructions: 'Clase del ícono icomoon/flaticon. Ej: icon-controlxpert_svgrepocom'
+      required: true

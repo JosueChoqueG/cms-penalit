@@ -1,0 +1,131 @@
+<!-- Main Header -->
+<header class="main-header header-style-three">
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="left-box d-flex align-items-center flex-wrap">
+                        <ul class="header-top_list">
+                            <li>
+                                <span class="icon"><img src="/assets/images/icons/map.svg" alt="Ubicación" /></span>
+                                {{ global:site_settings:header_location_text ?? '¡Encuéntranos ahora! Abancay - Apurímac' }}
+                            </li>
+                            <li>
+                                <span class="icon"><img src="/assets/images/icons/phone.svg" alt="Teléfono" /></span>
+                                <a href="tel:{{ global:site_settings:phone_href ?? '914159947' }}">{{ global:site_settings:phone ?? '914 159 947' }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-social_box">
+                        <span>¡Síguenos!</span>
+                        <a class="fa-brands fa-facebook-f fa-fw" href="{{ global:site_settings:facebook_url ?? '#' }}" target="_blank"></a>
+                        <a class="fa-brands fa-tiktok fa-fw" href="{{ global:site_settings:tiktok_url ?? '#' }}" target="_blank"></a>
+                        <a class="fa-brands fa-linkedin-in fa-fw" href="{{ global:site_settings:linkedin_url ?? 'https://www.linkedin.com/' }}" target="_blank"></a>
+                        <a class="fa-brands fa-youtube fa-fw" href="{{ global:site_settings:youtube_url ?? '#' }}" target="_blank"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Upper -->
+    <div class="header-upper">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="d-flex justify-content-between align-items-center" style="flex-wrap:nowrap; gap:0;">
+                    <div class="logo-box d-flex align-items-center">
+                        <div>
+                            <a href="/">
+                                <img src="/assets/images/logo_penalito.jpeg" alt="CJP Penalito Logo" style="max-height: 54px; width: auto; display:block;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="nav-outer d-flex align-items-center">
+                        <nav class="main-menu navbar-expand-md">
+                            <div class="navbar-header">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li>
+                                        <a href="/nosotros">
+                                            <i class="fa-solid fa-circle-info"></i>¿Quiénes somos?
+                                        </a>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a>
+                                            <i class="fa-solid fa-users"></i>Congreso
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/congresos">II CONGRESO REGIONAL DE ABOGADOS PENALISTAS DE APURIMAC</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a>
+                                            <i class="fa-solid fa-certificate"></i>Diplomados
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/diplomados">DIPLOMADO DE ALTA ESPECIALIZACIÓN EN ASISTENTE EN FUNCIÓN FISCAL Y ASISTENTE JURISDICCIONAL</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a>
+                                            <i class="fa-solid fa-book-bookmark"></i>Cursos
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/cursos">DERECHO PROCESAL PENAL</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/inscripcion">
+                                            <i class="fa-solid fa-file-signature"></i>Inscripción
+                                        </a>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="/libros"><i class="fa-solid fa-book"></i> Libros <i class="fa-solid fa-chevron-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/libros" class="fw-bold border-bottom pb-1 mb-1"><i class="fa-solid fa-layer-group me-1"></i> Todos los libros</a></li>
+                                            {{ taxonomy:book_categories sort="order" }}
+                                            <li><a href="/libros?categoria={{ slug }}">{{ title }}</a></li>
+                                            {{ /taxonomy:book_categories }}
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/verificador">
+                                            <i class="fa-solid fa-square-check"></i>Verificador de certificado
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="outer-box d-flex align-items-center flex-wrap">
+                            <a href="/login" class="login-btn-header">
+                                <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión
+                            </a>
+                            <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <div class="close-btn"><span class="icon flaticon-close-1"></span></div>
+        <nav class="menu-box">
+            <div class="nav-logo"><a href="/"><img src="/assets/images/logo1.png" alt="CJP Penalito" title="CJP Penalito"></a></div>
+            <div class="menu-outer"></div>
+        </nav>
+    </div>
+</header>
+<!-- End Main Header -->

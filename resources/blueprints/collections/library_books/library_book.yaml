@@ -1,0 +1,37 @@
+title: 'Libro / Material Digital'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: 'Nombre del libro o material'
+      required: true
+  -
+    handle: book_categories
+    field:
+      type: terms
+      taxonomies:
+        - book_categories
+      display: 'Categoría'
+      mode: select
+      max_items: 1
+      required: true
+  -
+    handle: cover_image
+    field:
+      type: assets
+      display: 'Imagen de portada'
+      max_files: 1
+      required: true
+  -
+    handle: inscription_plan
+    field:
+      type: text
+      display: 'Plan de inscripción'
+      instructions: 'Valor del parámetro "data-plan" que se envía al formulario de inscripción. Ej: Medicina Forense'
+      required: true
+  -
+    handle: alt_text
+    field:
+      type: text
+      display: 'Texto alternativo (alt) de la imagen'

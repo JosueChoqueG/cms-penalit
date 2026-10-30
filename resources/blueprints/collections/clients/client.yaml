@@ -1,0 +1,21 @@
+title: 'Cliente / Institución'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: 'Nombre de la institución'
+      required: true
+  -
+    handle: logo
+    field:
+      type: assets
+      display: 'Logo / Imagen'
+      max_files: 1
+      required: true
+  -
+    handle: link_url
+    field:
+      type: text
+      display: 'URL al sitio de la institución'
+      required: false

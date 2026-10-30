@@ -1,0 +1,100 @@
+{{ partial:header }}
+
+<section class="page-title" style="background-image:url(/assets/images/background/page-title.jpg)">
+    <div class="auto-container">
+        <h1 class="page-title_heading">Blog &amp; Artículos Jurídicos</h1>
+        <ul class="page-breadcrumb">
+            <li><a href="/">Inicio</a></li>
+            <li>Blog</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<div class="sidebar-page-container py-5">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                <div class="our-blogs">
+                    <div class="row clearfix">
+                        {{ collection:blog paginate="6" as="articles" }}
+                            {{ articles }}
+                            <div class="news-block_one col-lg-6 col-md-6 col-sm-12 mb-4">
+                                <div class="news-block_one-inner h-100 d-flex flex-column">
+                                    <div class="news-block_one-image">
+                                        <div class="news-block_one-date">{{ date format="j" }} <span>{{ date format="M, Y" | upper }}</span></div>
+                                        <a href="{{ url }}">
+                                            {{ if featured_image }}
+                                                <img src="/{{ featured_image }}" alt="{{ title }}" />
+                                            {{ else }}
+                                                <img src="/assets/images/resource/news-1.jpg" alt="{{ title }}" />
+                                            {{ /if }}
+                                        </a>
+                                    </div>
+                                    <div class="news-block_one-content flex-grow-1 d-flex flex-column">
+                                        <ul class="news-block_one-meta d-flex align-items-center flex-wrap">
+                                            <li><span class="icon fa-regular fa-user fa-fw"></span>{{ author ?? 'Equipo CJP' }}</li>
+                                            <li><span class="icon fa-regular fa-comment-dots fa-fw"></span>{{ comments_count ?? '0' }} Comentarios</li>
+                                        </ul>
+                                        <h4 class="news-block_one-heading mb-2"><a href="{{ url }}">{{ title }}</a></h4>
+                                        {{ if excerpt }}
+                                            <p class="text-muted small mb-3">{{ excerpt | truncate:120 }}</p>
+                                        {{ /if }}
+                                        <div class="mt-auto">
+                                            <a class="news-block_one-more" href="{{ url }}">Leer más <i class="fa-solid fa-angle-right fa-fw"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ /articles }}
+
+                            {{ paginate }}
+                                <div class="styled-pagination col-12 text-center mt-4">
+                                    <ul class="clearfix d-inline-flex gap-2 list-unstyled">
+                                        {{ if prev_page }}
+                                            <li class="prev"><a href="{{ prev_page }}"><span class="fa-solid fa-angle-left"></span></a></li>
+                                        {{ /if }}
+                                        {{ links:all }}
+                                            <li class="{{ is_current ? 'active' : '' }}"><a href="{{ url }}">{{ page }}</a></li>
+                                        {{ /links:all }}
+                                        {{ if next_page }}
+                                            <li class="next"><a href="{{ next_page }}"><span class="fa-solid fa-angle-right"></span></a></li>
+                                        {{ /if }}
+                                    </ul>
+                                </div>
+                            {{ /paginate }}
+                        {{ /collection:blog }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                <aside class="sidebar sticky-top" style="top: 100px;">
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget bg-light p-4 rounded mb-4 shadow-sm border">
+                        <h4 class="sidebar-title fw-bold mb-3" style="color: var(--primary-blue);">Especialidades</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li class="py-2 border-bottom"><a href="/capacitacion" class="text-dark d-flex justify-content-between">Derecho Procesal Penal <i class="fa-solid fa-angle-right text-muted"></i></a></li>
+                            <li class="py-2 border-bottom"><a href="/capacitacion" class="text-dark d-flex justify-content-between">Derecho Constitucional <i class="fa-solid fa-angle-right text-muted"></i></a></li>
+                            <li class="py-2 border-bottom"><a href="/capacitacion" class="text-dark d-flex justify-content-between">Criminalística y Criminología <i class="fa-solid fa-angle-right text-muted"></i></a></li>
+                            <li class="py-2"><a href="/capacitacion" class="text-dark d-flex justify-content-between">Medicina Forense <i class="fa-solid fa-angle-right text-muted"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- WhatsApp CTA Widget -->
+                    <div class="sidebar-widget text-white p-4 rounded mb-4 shadow-sm text-center" style="background: linear-gradient(135deg, #0d1b4b 0%, #1e3a8a 100%);">
+                        <i class="fa-brands fa-whatsapp display-4 text-success mb-3"></i>
+                        <h5 class="fw-bold text-white mb-2">Canal Académico WhatsApp</h5>
+                        <p class="small text-white-50 mb-3">Recibe artículos, jurisprudencia y actualizaciones en tu celular gratuitamente.</p>
+                        <a href="{{ global:site_settings:whatsapp_channel_url ?? '#' }}" target="_blank" class="btn btn-success fw-bold px-4 py-2">
+                            Unirme al Canal
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ partial:footer }}

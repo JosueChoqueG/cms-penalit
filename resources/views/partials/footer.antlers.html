@@ -1,0 +1,133 @@
+<!-- Footer -->
+<footer class="footer-style-two">
+    <div class="footer-two_circle"></div>
+    <div class="footer-two_circle-two"></div>
+    <div class="auto-container">
+        <div class="inner-container">
+            <div class="footer-newsletter-box">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-5 col-md-12 mb-3 mb-lg-0 d-flex align-items-center gap-3">
+                        <div class="p-2 bg-white rounded shadow-sm" style="display: inline-block; border: 2px solid #d9222a;">
+                            <img src="/assets/images/logo2.png" alt="CJP Penalito Logo" style="max-height: 48px; width: auto;">
+                        </div>
+                        <h3 class="mb-0 text-white" style="font-family: 'Outfit', sans-serif; font-weight: 700;">
+                            Suscríbete al <span style="color: var(--primary-gold);">Boletín</span>
+                        </h3>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <form id="newsletterForm" class="newsletter-form-style ms-auto">
+                            <input type="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+                            <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="widgets-section">
+                <div class="row clearfix">
+                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="row clearfix">
+                            <div class="footer_column col-lg-7 col-md-6 col-sm-12">
+                                <div class="footer-widget contact-widget">
+                                    <h4 class="footer-two_title" style="font-family: 'Outfit', sans-serif; font-weight: 700; color: #fff;">Ponte en Contacto</h4>
+                                    <ul class="footer-contact_list-two">
+                                        <li>
+                                            <span class="icon fa-solid fa-location-dot"></span>
+                                            <span>{{ global:site_settings:address ?? 'Abancay - Apurímac, Perú.' }}</span>
+                                        </li>
+                                        <li>
+                                            <span class="icon fa-solid fa-phone"></span>
+                                            <a href="tel:{{ global:site_settings:phone_href ?? '914159947' }}">{{ global:site_settings:phone ?? '914 159 947' }}</a>
+                                        </li>
+                                        <li>
+                                            <span class="icon fa-solid fa-envelope"></span>
+                                            <a href="mailto:{{ global:site_settings:email ?? 'corporacionjuridicapenalito@gmail.com' }}" style="word-break: break-all;">{{ global:site_settings:email ?? 'corporacionjuridicapenalito@gmail.com' }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="footer_column col-lg-5 col-md-6 col-sm-12">
+                                <div class="footer-widget links-widget">
+                                    <h4 class="footer-two_title" style="font-family: 'Outfit', sans-serif; font-weight: 700; color: #fff;">Enlaces Rápidos</h4>
+                                    <ul class="footer-list_two">
+                                        <li><a href="/nosotros"><i class="fa-solid fa-chevron-right fs-xs me-2 opacity-50"></i>Sobre Nosotros</a></li>
+                                        <li><a href="/capacitacion"><i class="fa-solid fa-chevron-right fs-xs me-2 opacity-50"></i>Capacitaciones</a></li>
+                                        <li><a href="/blog"><i class="fa-solid fa-chevron-right fs-xs me-2 opacity-50"></i>Blogs y Revistas</a></li>
+                                        <li><a href="/contacto"><i class="fa-solid fa-chevron-right fs-xs me-2 opacity-50"></i>Contactos</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="row clearfix">
+                            <div class="footer_column col-lg-6 col-md-6 col-sm-12">
+                                <div class="footer-widget links-widget">
+                                    <h4 class="footer-two_title" style="font-family: 'Outfit', sans-serif; font-weight: 700; color: #fff; margin-bottom: 20px;">Reclamaciones</h4>
+                                    <div class="libro-reclamaciones-badge">
+                                        <a href="/libro-reclamaciones">
+                                            <img src="/assets/images/resource/libro_reclamo.png" alt="Libro de Reclamaciones">
+                                            <p class="mb-0 mt-2 text-white small" style="font-weight: 500;">Libro de Reclamaciones</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer_column col-lg-6 col-md-6 col-sm-12">
+                                <div class="footer-widget gallery-widget">
+                                    <h4 class="footer-two_title" style="font-family: 'Outfit', sans-serif; font-weight: 700; color: #fff;">Nuestra Galería</h4>
+                                    <div class="footer-gallery-grid mt-3">
+                                        <div class="gallery-item">
+                                            <a class="lightbox-image" href="/assets/images/gallery/gallery-3.jpeg">
+                                                <img src="/assets/images/gallery/gallery-3.jpeg" alt="Galería 1">
+                                            </a>
+                                        </div>
+                                        <div class="gallery-item">
+                                            <a class="lightbox-image" href="/assets/images/gallery/gallery-5.jpeg">
+                                                <img src="/assets/images/gallery/gallery-5.jpeg" alt="Galería 2">
+                                            </a>
+                                        </div>
+                                        <div class="gallery-item">
+                                            <a class="lightbox-image" href="/assets/images/gallery/gallery-6.jpeg">
+                                                <img src="/assets/images/gallery/gallery-6.jpeg" alt="Galería 3">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="main-footer_copyright" style="font-size: 13px;">
+                    Derechos de Autor &copy; {{ global:site_settings:copyright_year ?? now format="Y" }} <a href="/" class="text-white fw-bold">CJP</a> Todos los Derechos Reservados.
+                </div>
+                <div class="footer-social_box">
+                    <a class="fa-brands fa-facebook-f fa-fw" href="{{ global:site_settings:facebook_url ?? '#' }}" target="_blank"></a>
+                    <a class="fa-brands fa-tiktok fa-fw" href="{{ global:site_settings:tiktok_url ?? '#' }}" target="_blank"></a>
+                    <a class="fa-brands fa-whatsapp fa-fw" href="{{ global:site_settings:whatsapp_url ?? '#' }}" target="_blank"></a>
+                    <a class="fa-brands fa-youtube fa-fw" href="{{ global:site_settings:youtube_url ?? '#' }}" target="_blank"></a>
+                </div>
+                <ul class="footer-bottom_nav" style="font-size: 13px;">
+                    <li><a href="/politicas">Política &amp; Privacidad</a></li>
+                    <li><a href="/terminos">Términos &amp; Condiciones</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Search Popup -->
+<div class="search-popup">
+    <div class="color-layer"></div>
+    <button class="close-search"><span class="flaticon-close-1"></span></button>
+    <form method="get" action="/search">
+        <div class="form-group">
+            <input type="search" name="q" placeholder="Buscar aquí..." required>
+            <button class="fa fa-solid fa-magnifying-glass fa-fw" type="submit"></button>
+        </div>
+    </form>
+</div>

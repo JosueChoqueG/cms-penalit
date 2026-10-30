@@ -1,0 +1,21 @@
+super: true
+id: f5179525-7f87-4896-af81-501938a0059d
+password_hash: $2y$12$2JOjbddtZbYGinPcUI6hp.p6284Y2NVm18gurN59HBLT9DUG94LbS
+preferences:
+  collections:
+    library_books:
+      view: list
+    services_why:
+      view: list
+    pages:
+      view: tree
+    popup_slides:
+      view: list
+    practice_areas:
+      view: list
+    slider_slides:
+      view: list
+    blog:
+      view: list
+    clients:
+      view: list

@@ -1,0 +1,401 @@
+{{# ============================================================
+   TEMPLATE: home.antlers.html
+   Página de inicio - Corporación Jurídica Penalito
+   Todas las secciones son dinámicas via colecciones Statamic
+   ============================================================ #}}
+
+{{ partial:header }}
+
+
+<!-- ============================================================
+     POPUP MODAL - Dinámico desde colección popup_slides
+     ============================================================ -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <button id="closePopup" aria-label="Cerrar">&times;</button>
+    <div class="popup-image-container">
+        {{ collection:popup_slides sort="order" }}
+            <div class="popup-slide{{ loop_first ? ' active' : '' }}">
+                <img src="{{ image }}" alt="{{ title }}" />
+            </div>
+        {{ /collection:popup_slides }}
+        <button type="button" class="popup-nav-btn popup-prev" id="popupPrev" aria-label="Anterior">&#10094;</button>
+        <button type="button" class="popup-nav-btn popup-next" id="popupNext" aria-label="Siguiente">&#10095;</button>
+    </div>
+    <div class="popup-action-bar">
+        {{ collection:popup_slides limit="1" }}
+            <a href="{{ whatsapp_url ?? global:site_settings:whatsapp_channel_url }}" target="_blank" class="popup-btn-whatsapp">
+                <i class="fa-brands fa-whatsapp fs-5"></i> Canal Académico
+            </a>
+        {{ /collection:popup_slides }}
+    </div>
+</div>
+
+<style>
+.popup-image-container { position: relative; overflow: hidden; }
+.popup-slide { display: none; }
+.popup-slide.active { display: block; }
+.popup-slide img { width: 100%; height: auto; display: block; }
+.popup-nav-btn {
+    cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+    width: 36px; height: 36px; color: #ffffff; background-color: rgba(13,27,75,0.75);
+    border: none; border-radius: 50%; z-index: 10; display: flex;
+    align-items: center; justify-content: center; font-size: 16px; transition: background-color 0.3s ease;
+}
+.popup-nav-btn:hover { background-color: var(--primary-red); }
+.popup-prev { left: 10px; }
+.popup-next { right: 10px; }
+.slider-one .swiper-slide {
+    position: relative !important; overflow: hidden !important;
+    background: transparent !important; padding: 160px 0px 100px !important;
+}
+.slider-video-wrapper {
+    position: absolute !important; top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100% !important; z-index: 0 !important;
+    overflow: hidden !important; pointer-events: none !important;
+}
+.slider-video-bg {
+    position: absolute !important; top: 50% !important; left: 50% !important;
+    min-width: 100% !important; min-height: 100% !important; width: auto !important;
+    height: auto !important; transform: translate(-50%, -50%) !important; object-fit: cover !important;
+}
+.slider-video-overlay {
+    position: absolute !important; top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100% !important;
+    background: linear-gradient(90deg, rgba(13,27,75,0.94) 0%, rgba(13,27,75,0.82) 50%, rgba(13,27,75,0.6) 100%) !important;
+    z-index: 1 !important;
+}
+.slider-one .auto-container { position: relative !important; z-index: 2 !important; }
+.slider-one_content { position: relative !important; z-index: 2 !important; }
+.slider-one_heading { text-shadow: 0 4px 20px rgba(0,0,0,0.7) !important; }
+</style>
+
+<!-- ============================================================
+     SLIDER HERO - Dinámico desde colección slider_slides
+     ============================================================ -->
+<section class="slider-one">
+    <div class="slider-one_pattern" style="background-image:url(/assets/images/main-slider/pattern-1.png)"></div>
+    <div class="slider-one_pattern-two" style="background-image:url(/assets/images/main-slider/pattern-2.png)"></div>
+    <div class="main-slider swiper-container">
+        <div class="swiper-wrapper">
+            {{ collection:slider_slides sort="order" }}
+            <div class="swiper-slide">
+                <div class="slider-video-wrapper">
+                    <video autoplay muted loop playsinline class="slider-video-bg">
+                        <source src="{{ video_url }}" type="video/mp4">
+                    </video>
+                    <div class="slider-video-overlay"></div>
+                </div>
+                <div class="auto-container">
+                    <div class="row clearfix">
+                        <div class="slider-one_content col-lg-7 col-md-12 col-sm-12">
+                            <div class="slider-one_content-inner">
+                                <h1 class="slider-one_heading">
+                                    {{ title }}
+                                </h1>
+                                <div class="slider-one_button">
+                                    <a href="{{ button_url ?? '/capacitacion' }}" class="theme-btn btn-style-one">
+                                        <span class="btn-wrap">
+                                            <span class="text-one">{{ button_text ?? 'Más información' }} <i class="fa-solid fa-angle-right fa-fw"></i></span>
+                                            <span class="text-two">{{ button_text ?? 'Más información' }} <i class="fa-solid fa-angle-right fa-fw"></i></span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-one_image-column col-lg-5 col-md-12 col-sm-12"></div>
+                    </div>
+                </div>
+            </div>
+            {{ /collection:slider_slides }}
+        </div>
+        <div class="slider-one-arrow">
+            <div class="main-slider-prev fas fa-arrow-left fa-fw"></div>
+            <div class="main-slider-next fas fa-arrow-right fa-fw"></div>
+        </div>
+        <div class="slider-one_scroll-down scroll-to-target" data-target=".services-one">
+            <img src="/assets/images/main-slider/scroll-down.png" alt="Scroll" />
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SERVICES ONE - ¿Por qué elegirnos? - Dinámico desde services_why
+     ============================================================ -->
+<section class="services-one">
+    <div class="auto-container">
+        <div class="sec-title title-anim centered">
+            <div class="sec-title_title">POR QUÉ ELEGIRNOS</div>
+            <h2 class="sec-title_heading">CORPORACIÓN JURÍDICA</h2><br>
+            <h2 class="sec-title_heading" style="color: var(--primary-red);">PENALITO</h2>
+        </div>
+        <div class="services-one_carousel swiper-container">
+            <div class="swiper-wrapper">
+                {{ collection:services_why sort="order" }}
+                <div class="swiper-slide">
+                    <div class="service-block_one">
+                        <div class="service-block_one-inner">
+                            <div class="service-block_one-hover"></div>
+                            <div class="service-block_one_pattern" style="background-image:url(/assets/images/background/service-one_pattern.png)"></div>
+                            <div class="service-block_one-background"></div>
+                            <div class="service-block_one-icon {{ icon_class }}"></div>
+                            <h4 class="service-block_one-heading"><a href="#">{{ title }}</a></h4>
+                            <div class="service-block_one-text">{{ description }}</div>
+                        </div>
+                    </div>
+                </div>
+                {{ /collection:services_why }}
+            </div>
+            <div class="services-one-arrow">
+                <div class="services-one_carousel-prev fa-solid fa-angle-left fa-fw"></div>
+                <div class="services-one_carousel-next fa-solid fa-angle-right fa-fw"></div>
+            </div>
+            <div class="services-one_carousel-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     BIBLIOTECA DIGITAL - Dinámico desde library_books
+     ============================================================ -->
+<section class="digital-library-section py-5" style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+    <div class="auto-container">
+        <div class="sec-title text-center mb-5">
+            <span class="sub-title text-red text-uppercase fw-bold letter-spacing-1" style="color: var(--primary-red) !important; font-size: 13px; text-transform: uppercase;">Material Exclusivo</span>
+            <h2 class="sec-title_heading mt-2" style="font-size: 32px; font-weight: 700; color: var(--primary-blue);">Biblioteca Digital y Modelos de Escritos</h2>
+            <p class="text-muted mt-2 mx-auto" style="max-width: 650px; font-size: 15px;">
+                Accede a nuestra colección de libros digitales especializados, diccionarios y formatos de escritos listos para editar en Word y PDF. ¡Haz clic para solicitarlos!
+            </p>
+        </div>
+        <div class="library-carousel-container position-relative px-md-5">
+            <div class="swiper-container library-carousel">
+                <div class="swiper-wrapper">
+                    {{ collection:library_books sort="order" }}
+                    <div class="swiper-slide">
+                        <div class="library-card">
+                            <div class="library-image-wrap">
+                                <img src="{{ cover_image }}" alt="{{ alt_text ?? title }}" class="library-img">
+                                <div class="library-hover-overlay">
+                                    <a href="#" class="btn btn-gold trigger-inscription" data-plan="{{ inscription_plan }}">
+                                        Inscripción <i class="fa-solid fa-download ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ /collection:library_books }}
+                </div>
+            </div>
+            <div class="library-carousel-prev swiper-button-prev-custom"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="library-carousel-next swiper-button-next-custom"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="library-carousel-pagination text-center mt-4"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+.digital-library-section { position: relative; z-index: 10; }
+.library-carousel-container { width: 100%; }
+.library-card { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(13,27,75,0.08); border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+.library-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(13,27,75,0.15); }
+.library-image-wrap { position: relative; width: 100%; padding-top: 66.67%; overflow: hidden; }
+.library-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.library-card:hover .library-img { transform: scale(1.05); }
+.library-hover-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(13,27,75,0.75); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+.library-image-wrap:hover .library-hover-overlay { opacity: 1; }
+.swiper-button-prev-custom, .swiper-button-next-custom { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 50%; color: var(--primary-blue); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+.swiper-button-prev-custom:hover, .swiper-button-next-custom:hover { background: var(--primary-red); border-color: var(--primary-red); color: #ffffff; }
+.swiper-button-prev-custom { left: 10px; }
+.swiper-button-next-custom { right: 10px; }
+@media (max-width: 768px) { .swiper-button-prev-custom, .swiper-button-next-custom { display: none !important; } }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Popup Auto-Slider ---
+    const popup = document.getElementById('popup');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closePopup');
+    const slides = document.querySelectorAll('.popup-slide');
+    const prevBtn = document.getElementById('popupPrev');
+    const nextBtn = document.getElementById('popupNext');
+    let popupIndex = 0, popupTimer = null;
+    function showPopupSlide(index) {
+        if (!slides.length) return;
+        if (index >= slides.length) popupIndex = 0;
+        else if (index < 0) popupIndex = slides.length - 1;
+        else popupIndex = index;
+        slides.forEach(s => s.classList.remove('active'));
+        slides[popupIndex].classList.add('active');
+    }
+    function startPopupAuto() { stopPopupAuto(); popupTimer = setInterval(() => showPopupSlide(popupIndex + 1), 5000); }
+    function stopPopupAuto() { if (popupTimer) clearInterval(popupTimer); }
+    function openPopup() { if (popup) popup.style.display='block'; if (overlay) overlay.style.display='block'; showPopupSlide(0); startPopupAuto(); }
+    function closePopupFunc() { if (popup) popup.style.display='none'; if (overlay) overlay.style.display='none'; stopPopupAuto(); }
+    {{ if global:site_settings:show_popup !== false }}openPopup();{{ /if }}
+    if (closeBtn) closeBtn.addEventListener('click', closePopupFunc);
+    if (overlay) overlay.addEventListener('click', closePopupFunc);
+    if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); showPopupSlide(popupIndex - 1); startPopupAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); showPopupSlide(popupIndex + 1); startPopupAuto(); });
+    // --- Library Carousel ---
+    new Swiper('.library-carousel', {
+        slidesPerView: 1, spaceBetween: 24, loop: true,
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        navigation: { nextEl: '.library-carousel-next', prevEl: '.library-carousel-prev' },
+        pagination: { el: '.library-carousel-pagination', clickable: true },
+        breakpoints: { 640: { slidesPerView: 1.5 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+});
+</script>
+
+<!-- ============================================================
+     SERVICES TWO - Áreas de Práctica - Dinámico desde practice_areas
+     ============================================================ -->
+<section class="services-two">
+    <div class="auto-container">
+        <div class="sec-title light centered">
+            <div class="sec-title_title title-anim">Área de práctica</div>
+            <h2 class="sec-title_heading">Explore especialidades jurídicas constitucionales &amp; Penales</h2>
+        </div>
+        <div class="row clearfix">
+            {{ collection:practice_areas sort="order" }}
+            <div class="service-block_two col-lg-4 col-md-6 col-sm-12">
+                <div class="service-block_two-inner wow {{ wow_animation ?? 'fadeInUp' }}" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <div class="service-block_two-image" style="background-image:url(/{{ background_image ?? 'assets/images/background/service-1.jpg' }})"></div>
+                    <div class="upper-box">
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <div class="service-block_two-number">{{ if index < 10 }}0{{ /if }}{{ index }}</div>
+                            <div class="service-block_two-icon {{ icon_class }}"></div>
+                        </div>
+                        <h4 class="service-block_two-heading"><a href="{{ link_url ?? '#' }}">{{ title }}</a></h4>
+                        <div class="service-block_two-text">{{ description }}</div>
+                    </div>
+                    <div class="lower-box">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <a class="service-block_two-arrow {{ icon_class }}" href="{{ link_url ?? '#' }}"></a>
+                            <a class="service-block_two-more" href="{{ link_url ?? '#' }}">Saber Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ /collection:practice_areas }}
+        </div>
+        <div class="service-one_button text-center mt-4">
+            <a href="/capacitacion" class="theme-btn btn-style-one">
+                <span class="btn-wrap">
+                    <span class="text-one">Ver Capacitaciones <i class="fa-solid fa-angle-right fa-fw"></i></span>
+                    <span class="text-two">Ver Capacitaciones <i class="fa-solid fa-angle-right fa-fw"></i></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     PROCESS ONE - Proceso de Certificación - Dinámico desde process_steps
+     ============================================================ -->
+<section class="process-one">
+    <div class="auto-container">
+        <div class="sec-title centered">
+            <div class="sec-title_title">CÓMO FUNCIONA</div>
+            <h2>Proceso de Adquisición de <br><span style="color: var(--primary-gold);">Certificado</span></h2>
+        </div>
+        <div class="row clearfix">
+            {{ collection:process_steps sort="order" }}
+            <div class="process-block_one col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                <div class="process-block_one-inner wow fadeInLeft" data-wow-delay="{{ wow_delay ?? '0ms' }}" data-wow-duration="1500ms">
+                    <div class="process-block_one-icon {{ icon_class }}"></div>
+                    <div class="process-block_one-content">
+                        <div class="process-block_one-number">{{ if index < 10 }}0{{ /if }}{{ index }}</div>
+                        <h4 class="process-block_one-heading"><a href="#">{{ title }}</a></h4>
+                        <div class="process-block_one-text">{{ description }}</div>
+                    </div>
+                </div>
+            </div>
+            {{ /collection:process_steps }}
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     BLOG / NOTICIAS - Dinámico desde colección blog
+     ============================================================ -->
+<section class="news-one">
+    <div class="auto-container">
+        <div class="sec-title">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="left-box">
+                    <div class="sec-title_title">NUESTRO BLOG</div>
+                    <h2>Últimas Noticias y Artículos</h2>
+                </div>
+                <div class="team-one_button">
+                    <a href="/blog" class="theme-btn btn-style-one">
+                        <span class="btn-wrap">
+                            <span class="text-one">Ver Todo el Blog <i class="fa-solid fa-angle-right fa-fw"></i></span>
+                            <span class="text-two">Ver Todo el Blog <i class="fa-solid fa-angle-right fa-fw"></i></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="news-one_carousel swiper-container">
+            <div class="swiper-wrapper">
+                {{ collection:blog sort="date:desc" limit="6" }}
+                <div class="swiper-slide">
+                    <div class="news-block_one">
+                        <div class="news-block_one-inner wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="news-block_one-image">
+                                <div class="news-block_one-date">{{ date format="j" }} <span>{{ date format="M, Y" | upper }}</span></div>
+                                <a href="{{ url }}">
+                                    {{ if featured_image }}
+                                        <img src="/{{ featured_image }}" alt="{{ title }}" />
+                                    {{ else }}
+                                        <img src="/assets/images/resource/news-1.jpg" alt="{{ title }}" />
+                                    {{ /if }}
+                                </a>
+                            </div>
+                            <div class="news-block_one-content">
+                                <ul class="news-block_one-meta d-flex align-items-center flex-wrap">
+                                    <li><span class="icon fa-regular fa-user fa-fw"></span>{{ author ?? 'Equipo CJP' }}</li>
+                                    <li><span class="icon fa-regular fa-comment-dots fa-fw"></span>{{ comments_count ?? '0' }} Comentarios</li>
+                                </ul>
+                                <h4 class="news-block_one-heading"><a href="{{ url }}">{{ title }}</a></h4>
+                                <a class="news-block_one-more" href="{{ url }}">leer más <i class="fa-solid fa-angle-right fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ /collection:blog }}
+            </div>
+            <div class="news-one-arrow">
+                <div class="news-one_carousel-prev fa-solid fa-angle-left fa-fw"></div>
+                <div class="news-one_carousel-next fa-solid fa-angle-right fa-fw"></div>
+            </div>
+            <div class="news-one_carousel-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     CLIENTS / INSTITUCIONES - Dinámico desde colección clients
+     ============================================================ -->
+<section class="clients-one bg-light py-5">
+    <div class="auto-container">
+        <div class="clients-one_slider swiper-container">
+            <div class="swiper-wrapper">
+                {{ collection:clients sort="order" }}
+                <div class="swiper-slide">
+                    <div class="client-image">
+                        <a href="{{ link_url ?? '#' }}" target="_blank">
+                            <img src="{{ logo }}" alt="{{ title }}" />
+                        </a>
+                    </div>
+                </div>
+                {{ /collection:clients }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ partial:footer }}
+

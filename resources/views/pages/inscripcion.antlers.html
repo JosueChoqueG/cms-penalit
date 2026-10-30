@@ -1,0 +1,255 @@
+{{ partial:header }}
+
+<!-- Page Title Section -->
+<section class="page-title" style="background-image: url(/assets/images/background/page-title.jpg)">
+	<div class="auto-container">
+		<ul class="page-breadcrumb">
+			<li><a href="/">Inicio</a></li>
+			<li>Inscripción</li>
+		</ul>
+		<h2>Inscripción en Línea</h2>
+	</div>
+</section>
+
+<!-- Enrollment Section -->
+<section class="enrollment-section py-5" style="background-color: #f8fafc;">
+	<div class="auto-container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 col-md-8 col-sm-12">
+				
+				<!-- Main Registration Card -->
+				<div class="card border-0 shadow-lg rounded-4 overflow-hidden" style="border-radius: 16px; border: 3px solid var(--primary-red) !important;">
+					<div class="p-4 p-md-5 bg-white position-relative">
+						
+						<!-- Logo Header -->
+						<div class="text-center mb-4">
+							<div class="inscription-logo-wrap mb-2">
+								<img src="/assets/images/logo2.png" alt="CJP Penalito Logo" style="max-height: 48px; width: auto;">
+							</div>
+						</div>
+
+						<!-- STEP 1: Personal Data Form -->
+						<div id="step1Container">
+							<div class="text-center mb-4">
+								<h3 class="font-weight-bold" style="color: var(--primary-blue); font-family: 'Outfit', sans-serif; font-size: 24px;">Formulario de Inscripción</h3>
+								<p class="text-muted" style="font-size: 14px;">Completa tus datos para continuar con el pago</p>
+							</div>
+
+							<form id="enrollmentFormStep1">
+								<div class="form-group mb-3">
+									<label for="regNombre" class="form-label fw-bold text-dark" style="font-size: 13px;">Nombre Completo</label>
+									<input type="text" id="regNombre" class="form-control py-2 px-3" placeholder="Ingresa tu nombre completo" style="border-radius: 8px; border: 1px solid rgba(13, 27, 75, 0.15); background-color: #f8fafc;" required>
+								</div>
+								
+								<div class="form-group mb-3">
+									<label for="regDni" class="form-label fw-bold text-dark" style="font-size: 13px;">DNI</label>
+									<input type="text" id="regDni" class="form-control py-2 px-3" placeholder="Ingresa tu número de DNI" maxlength="8" pattern="[0-9]{8}" style="border-radius: 8px; border: 1px solid rgba(13, 27, 75, 0.15); background-color: #f8fafc;" required>
+								</div>
+
+								<div class="form-group mb-3">
+									<label for="regCorreo" class="form-label fw-bold text-dark" style="font-size: 13px;">Correo Electrónico</label>
+									<input type="email" id="regCorreo" class="form-control py-2 px-3" placeholder="ejemplo@correo.com" style="border-radius: 8px; border: 1px solid rgba(13, 27, 75, 0.15); background-color: #f8fafc;" required>
+								</div>
+
+								<div class="form-group mb-3">
+									<label for="regTelefono" class="form-label fw-bold text-dark" style="font-size: 13px;">Teléfono / Celular</label>
+									<input type="tel" id="regTelefono" class="form-control py-2 px-3" placeholder="987 654 321" style="border-radius: 8px; border: 1px solid rgba(13, 27, 75, 0.15); background-color: #f8fafc;" required>
+								</div>
+
+								<div class="form-group mb-4">
+									<label for="regCurso" class="form-label fw-bold text-dark" style="font-size: 13px;">Especialidad de Interés</label>
+									<select id="regCurso" class="form-select py-2 px-3" style="border-radius: 8px; border: 1px solid rgba(13, 27, 75, 0.15); background-color: #f8fafc; font-size: 14px;" required>
+										<option value="" disabled selected>Selecciona una opción</option>
+										<option value="CURSO ESPECIALIZADO EN DERECHO PROCESAL PENAL">CURSO ESPECIALIZADO EN DERECHO PROCESAL PENAL S/30</option>
+										<option value="DIPLOMADO DE ALTA ESPECIALIZACIÓN EN ASISTENTE EN FUNCIÓN FISCAL Y ASISTENTE JURISDICCIONAL">DIPLOMADO DE ALTA ESPECIALIZACIÓN EN ASISTENTE EN FUNCIÓN FISCAL Y ASISTENTE JURISDICCIONAL S/200</option>
+										<option value="II CONGRESO REGIONAL DE ABOGADOS PENALISTAS DE APURIMAC">II CONGRESO REGIONAL DE ABOGADOS PENALISTAS DE APURIMAC S/50</option>
+									</select>
+								</div>
+
+								<button type="submit" class="btn w-100 py-3 text-uppercase font-weight-bold" style="background-color: #0d1b4b; color: #fff; border: none; border-radius: 30px; font-family: 'Outfit', sans-serif; font-size: 14px; letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(13, 27, 75, 0.35);">
+									Siguiente: Ver Medios de Pago <i class="fa-solid fa-arrow-right ms-1"></i>
+								</button>
+							</form>
+						</div>
+
+						<!-- STEP 2: Payment Methods Form -->
+						<div id="step2Container" style="display: none;">
+							<div class="text-center mb-4">
+								<span class="badge bg-light text-primary py-2 px-3 rounded-pill fw-bold" style="color: var(--primary-blue) !important; background-color: rgba(13, 27, 75, 0.05) !important; font-size: 12px; border: 1px solid rgba(13, 27, 75, 0.1);">
+									Certificado por Ilustre Colegio de Abogados de Apurímac
+								</span>
+								<h3 class="font-weight-bold mt-3" style="color: var(--primary-blue); font-family: 'Outfit', sans-serif; font-size: 24px;">Medios de Pago</h3>
+								<p class="text-muted" style="font-size: 14px;">Realiza tu transferencia o pago por Yape/Plin</p>
+							</div>
+
+							<!-- Bank details list -->
+							<div class="p-3 mb-4 rounded-3 text-dark border" style="background-color: #f8fafc; border-color: rgba(13, 27, 75, 0.1) !important; font-size: 14px;">
+								<div class="d-flex justify-content-between mb-2">
+									<span class="text-muted fw-bold">A nombre de:</span>
+									<span class="text-end fw-bold" style="color: var(--primary-blue);">Flor Medalith Díaz Aliaga</span>
+								</div>
+								
+								<div class="d-flex justify-content-between align-items-center mb-2">
+									<span class="text-muted fw-bold">BCP N°:</span>
+									<div class="d-flex align-items-center gap-1">
+										<span class="fw-bold">20034698428097</span>
+										<button class="btn btn-sm btn-link p-0 text-muted" type="button" onclick="copyToClipboard('20034698428097', 'Número de cuenta BCP copiado')">
+											<i class="fa-regular fa-copy"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="d-flex justify-content-between align-items-center mb-2">
+									<span class="text-muted fw-bold">CCI N°:</span>
+									<div class="d-flex align-items-center gap-1">
+										<span class="fw-bold">00220013469842809740</span>
+										<button class="btn btn-sm btn-link p-0 text-muted" type="button" onclick="copyToClipboard('00220013469842809740', 'CCI copiado')">
+											<i class="fa-regular fa-copy"></i>
+										</button>
+									</div>
+								</div>
+
+								<div class="d-flex justify-content-between align-items-center">
+									<span class="text-muted fw-bold">Yape y/o Plin N°:</span>
+									<div class="d-flex align-items-center gap-1">
+										<span class="fw-bold">997 370 339</span>
+										<button class="btn btn-sm btn-link p-0 text-muted" type="button" onclick="copyToClipboard('997370339', 'Número de Yape copiado')">
+											<i class="fa-regular fa-copy"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<!-- QR Code Scan -->
+							<div class="text-center mb-4">
+								<div class="d-inline-block p-2 bg-white border rounded shadow-sm mb-2" style="border-radius: 12px !important;">
+									<img src="/assets/images/resource/yape11.png" alt="Yape / Plin QR Code" style="max-height: 160px; width: auto;">
+								</div>
+								<p class="text-muted small text-uppercase font-weight-bold letter-spacing-1 mb-0">Escanea para pagar con Yape o Plin</p>
+							</div>
+
+							<!-- Action Buttons -->
+							<div class="d-flex gap-2">
+								<button type="button" class="btn btn-outline-secondary w-50 py-3 rounded-pill" id="btnBackTo1" style="border-color: rgba(13, 27, 75, 0.2); color: var(--primary-blue); font-weight: 700; font-family: 'Outfit', sans-serif; font-size: 13px;">
+									<i class="fa-solid fa-arrow-left me-1"></i> Atrás
+								</button>
+								<button type="button" class="btn btn-gold w-100 py-3 rounded-pill text-uppercase font-weight-bold" id="btnSendReceipt" style="background-color: #0ea52eff; color: #fff; border: none; font-family: 'Outfit', sans-serif; font-size: 13px; box-shadow: 0 4px 15px rgba(14, 200, 26, 0.25);">
+									Enviar Comprobante <i class="fa-brands fa-whatsapp ms-1"></i>
+								</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Logic and Scripts -->
+<script>
+	function copyToClipboard(text, message) {
+		navigator.clipboard.writeText(text).then(() => {
+			Swal.fire({
+				toast: true,
+				position: 'top-end',
+				icon: 'success',
+				title: message,
+				showConfirmButton: false,
+				timer: 1500
+			});
+		}).catch(err => {
+			console.error('Error al copiar: ', err);
+		});
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+		const step1Container = document.getElementById('step1Container');
+		const step2Container = document.getElementById('step2Container');
+		const enrollmentFormStep1 = document.getElementById('enrollmentFormStep1');
+		const btnBackTo1 = document.getElementById('btnBackTo1');
+		const btnSendReceipt = document.getElementById('btnSendReceipt');
+
+		if (enrollmentFormStep1) {
+			enrollmentFormStep1.addEventListener('submit', function (e) {
+				e.preventDefault();
+				
+				// Ocultar Paso 1, Mostrar Paso 2
+				step1Container.style.display = 'none';
+				step2Container.style.display = 'block';
+				
+				// Desplazarse al inicio de la tarjeta para mejor experiencia
+				document.querySelector('.enrollment-section').scrollIntoView({ behavior: 'smooth' });
+			});
+		}
+
+		if (btnBackTo1) {
+			btnBackTo1.addEventListener('click', function () {
+				// Volver al Paso 1
+				step2Container.style.display = 'none';
+				step1Container.style.display = 'block';
+			});
+		}
+
+		if (btnSendReceipt) {
+			btnSendReceipt.addEventListener('click', function () {
+				const nombre = document.getElementById('regNombre').value;
+				const dni = document.getElementById('regDni').value;
+				const correo = document.getElementById('regCorreo').value;
+				const telefono = document.getElementById('regTelefono').value;
+				const curso = document.getElementById('regCurso').value;
+
+				const text = `Hola, acabo de realizar el pago para mi inscripción. Aquí le envío mi comprobante.
+
+Mis datos de registro son:
+- Nombre Completo: ${nombre}
+- DNI: ${dni}
+- Correo: ${correo}
+- Celular: ${telefono}
+- Especialidad de Interés: ${curso}
+
+Adjunto la captura/voucher de pago correspondiente.`;
+
+				const whatsappUrl = `https://wa.me/51997370339?text=${encodeURIComponent(text)}`;
+				
+				// Abrir whatsapp en pestaña nueva
+				window.open(whatsappUrl, '_blank');
+
+				// Mostrar alerta SweetAlert
+				Swal.fire({
+					title: '¡Redirigiendo a WhatsApp!',
+					text: 'Envía la captura de tu pago en el chat de WhatsApp para validar tu matrícula de inmediato.',
+					icon: 'success',
+					confirmButtonText: 'Aceptar',
+					confirmButtonColor: 'var(--primary-blue)'
+				});
+			});
+		}
+
+		// Pre-seleccionar curso si se envía por parámetro en la URL (?curso=...)
+		const urlParams = new URLSearchParams(window.location.search);
+		const cursoParam = urlParams.get('curso');
+		if (cursoParam) {
+			const selectEl = document.getElementById('regCurso');
+			if (selectEl) {
+				const queryLower = decodeURIComponent(cursoParam).toLowerCase();
+				let matched = false;
+				for (let i = 0; i < selectEl.options.length; i++) {
+					const optVal = selectEl.options[i].value.toLowerCase();
+					if (optVal.includes(queryLower) || queryLower.includes(optVal)) {
+						selectEl.selectedIndex = i;
+						matched = true;
+						break;
+					}
+				}
+				if (!matched && cursoParam.trim() !== '') {
+					const newOpt = new Option(cursoParam, cursoParam, true, true);
+					selectEl.add(newOpt);
+				}
+			}
+		}
+	});
+</script>
+
+{{ partial:footer }}

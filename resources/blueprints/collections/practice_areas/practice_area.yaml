@@ -1,0 +1,43 @@
+title: 'Área de Práctica'
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: 'Título del área'
+      required: true
+  -
+    handle: description
+    field:
+      type: textarea
+      display: 'Descripción'
+      required: true
+  -
+    handle: icon_class
+    field:
+      type: text
+      display: 'Clase CSS del ícono'
+      instructions: 'Clase del ícono icomoon. Ej: icon-Frame'
+      required: true
+  -
+    handle: background_image
+    field:
+      type: assets
+      display: 'Imagen de fondo de la tarjeta'
+      max_files: 1
+  -
+    handle: link_url
+    field:
+      type: text
+      display: 'URL del enlace Saber Más'
+      default: '#'
+  -
+    handle: wow_animation
+    field:
+      type: select
+      display: 'Animación WOW'
+      options:
+        fadeInLeft: 'Fade In Left'
+        fadeInUp: 'Fade In Up'
+        fadeInRight: 'Fade In Right'
+      default: fadeInUp

@@ -1,0 +1,11 @@
+title: 'Blog / Noticias'
+template: blog/show
+layout: layout
+orderable: false
+sort_dir: desc
+sort_field: date
+dated: true
+propagate: false
+sites:
+  - default
+route: '/blog/{slug}'

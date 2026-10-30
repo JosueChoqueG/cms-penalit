@@ -1,0 +1,110 @@
+{{ partial:header }}
+
+<section class="page-title" style="background-image:url(/assets/images/background/page-title.jpg)">
+    <div class="auto-container">
+        <h1 class="page-title_heading">Verificador de Certificados</h1>
+        <ul class="page-breadcrumb">
+            <li><a href="/">Inicio</a></li>
+            <li>Verificador Oficial</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Certificate Verifier Section -->
+<section class="py-5" style="background-color: #f8fafc;">
+    <div class="auto-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-10">
+                <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white text-center">
+                    <div class="badge-icon mb-3">
+                        <i class="fa-solid fa-square-check text-success display-3"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2" style="color: var(--primary-blue);">Validación de Certificación Académica</h2>
+                    <p class="text-muted mb-4">
+                        Ingresa el código único del certificado (impreso en el reverso o bajo el código QR) o el número de DNI del participante para verificar su autenticidad oficial.
+                    </p>
+
+                    <form id="verifierForm" class="mb-4">
+                        <div class="input-group input-group-lg shadow-sm rounded-pill overflow-hidden border">
+                            <span class="input-group-text bg-white border-0 ps-3">
+                                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            </span>
+                            <input type="text" id="certQuery" class="form-control border-0 px-2" placeholder="Ej: CJP-2024-0891 ó DNI" required>
+                            <button class="btn btn-danger px-4 fw-bold" type="submit" style="background-color: var(--primary-red); border: none;">
+                                Validar
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Result Container -->
+                    <div id="verifierResult" class="d-none text-start p-4 rounded-3 border"></div>
+
+                    <div class="mt-4 pt-3 border-top text-center text-muted small">
+                        <i class="fa-solid fa-shield-halved text-primary me-1"></i> Certificados emitidos con respaldo de la Corporación Jurídica Penalito y Colegios Profesionales en convenio.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('verifierForm');
+    const resultBox = document.getElementById('verifierResult');
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = document.getElementById('certQuery').value.trim();
+            if (!query) return;
+
+            // Loading state
+            Swal.fire({
+                title: 'Consultando registro...',
+                text: 'Buscando en la base de datos de diplomas y certificados de CJP.',
+                icon: 'info',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    setTimeout(() => {
+                        Swal.close();
+                        resultBox.classList.remove('d-none');
+                        // Demo certificate matching
+                        resultBox.innerHTML = `
+                            <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
+                                <div class="bg-success text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                    <i class="fa-solid fa-check fs-5"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0 fw-bold text-success">CERTIFICADO AUTÉNTICO Y VÁLIDO</h5>
+                                    <span class="text-muted small">Código Registrado: <strong>${query.toUpperCase()}</strong></span>
+                                </div>
+                            </div>
+                            <div class="row g-2 small">
+                                <div class="col-sm-4 text-muted">Participante:</div>
+                                <div class="col-sm-8 fw-bold text-dark">Alonso Ramos Carrión</div>
+                                
+                                <div class="col-sm-4 text-muted">Programa:</div>
+                                <div class="col-sm-8 fw-bold text-dark">II Congreso Regional de Abogados Penalistas</div>
+
+                                <div class="col-sm-4 text-muted">Horas Académicas:</div>
+                                <div class="col-sm-8 fw-bold text-dark">120 horas pedagógicas (Créditos oficiales)</div>
+
+                                <div class="col-sm-4 text-muted">Fecha de Emisión:</div>
+                                <div class="col-sm-8 fw-bold text-dark">15 de Septiembre de 2024</div>
+
+                                <div class="col-sm-4 text-muted">Estado:</div>
+                                <div class="col-sm-8"><span class="badge bg-success">Activo / Verificado</span></div>
+                            </div>
+                        `;
+                    }, 1200);
+                }
+            });
+        });
+    }
+});
+</script>
+
+{{ partial:footer }}

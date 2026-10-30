@@ -1,0 +1,120 @@
+{{ partial:header }}
+
+<section class="page-title" style="background-image:url(/assets/images/background/page-title.jpg)">
+    <div class="auto-container">
+        <h1 class="page-title_heading">Contáctanos</h1>
+        <ul class="page-breadcrumb">
+            <li><a href="/">Inicio</a></li>
+            <li>Contacto</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5 bg-light">
+    <div class="auto-container">
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4 rounded-4 bg-white text-center">
+                    <div class="icon fs-1 text-danger mb-3"><i class="fa-solid fa-location-dot"></i></div>
+                    <h5 class="fw-bold mb-2" style="color: var(--primary-blue);">Nuestra Sede</h5>
+                    <p class="text-muted small mb-0">{{ global:site_settings:address ?? 'Abancay - Apurímac, Perú.' }}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm p-4 rounded-4 bg-white text-center">
+                    <div class="icon fs-1 text-danger mb-3"><i class="fa-solid fa-phone"></i></div>
+                    <h5 class="fw-bold mb-2" style="color: var(--primary-blue);">Central Telefónica / WhatsApp</h5>
+                    <p class="text-muted small mb-0">
+                        <a href="tel:{{ global:site_settings:phone_href ?? '914159947' }}" class="text-decoration-none text-dark fw-bold">
+                            {{ global:site_settings:phone ?? '914 159 947' }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card h-100 border-0 shadow-sm p-4 rounded-4 bg-white text-center">
+                    <div class="icon fs-1 text-danger mb-3"><i class="fa-solid fa-envelope"></i></div>
+                    <h5 class="fw-bold mb-2" style="color: var(--primary-blue);">Correo Electrónico</h5>
+                    <p class="text-muted small mb-0">
+                        <a href="mailto:{{ global:site_settings:email ?? 'corporacionjuridicapenalito@gmail.com' }}" class="text-decoration-none text-dark">
+                            {{ global:site_settings:email ?? 'corporacionjuridicapenalito@gmail.com' }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white">
+                    <div class="sec-title mb-4">
+                        <div class="sec-title_title">ENVÍANOS UN MENSAJE</div>
+                        <h2 class="sec-title_heading" style="color: var(--primary-blue);">Estamos para orientarte</h2>
+                    </div>
+
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contact_name" class="form-label fw-semibold">Nombre Completo <span class="text-danger">*</span></label>
+                                <input type="text" id="contact_name" class="form-control" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contact_email" class="form-label fw-semibold">Correo Electrónico <span class="text-danger">*</span></label>
+                                <input type="email" id="contact_email" class="form-control" placeholder="tu@correo.com" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contact_phone" class="form-label fw-semibold">Teléfono / WhatsApp <span class="text-danger">*</span></label>
+                                <input type="tel" id="contact_phone" class="form-control" placeholder="Número de celular" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contact_subject" class="form-label fw-semibold">Asunto</label>
+                                <input type="text" id="contact_subject" class="form-control" placeholder="Ej: Consulta sobre diplomado">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="contact_message" class="form-label fw-semibold">Mensaje o Consulta <span class="text-danger">*</span></label>
+                            <textarea id="contact_message" class="form-control" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger btn-lg fw-bold px-4 py-3 shadow" style="background-color: var(--primary-red); border: none;">
+                            <i class="fa-solid fa-paper-plane me-2"></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact_name').value;
+            const email = document.getElementById('contact_email').value;
+            const phone = document.getElementById('contact_phone').value;
+            const subject = document.getElementById('contact_subject').value;
+            const message = document.getElementById('contact_message').value;
+
+            Swal.fire({
+                title: '¡Mensaje Enviado!',
+                text: 'Gracias por ponerte en contacto. Nos comunicaremos contigo a la brevedad.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#0f1356'
+            }).then(() => {
+                contactForm.reset();
+            });
+        });
+    }
+});
+</script>
+
+{{ partial:footer }}

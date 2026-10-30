@@ -1,0 +1,9 @@
+title: 'Áreas de Práctica'
+template: false
+layout: false
+orderable: true
+sort_dir: asc
+dated: false
+propagate: false
+sites:
+  - default

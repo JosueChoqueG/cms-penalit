@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="{{ site:short_locale }}">
+<head>
+<meta charset="utf-8">
+<title>{{ seo_title ?? (title ?? site:name) | sanitize }} - Corporación Jurídica Penalito</title>
+<meta name="description" content="{{ meta_description ?? site:name }}">
+<!-- Stylesheets -->
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/meanmenu.min.css" rel="stylesheet">
+<link href="/css/responsive.css" rel="stylesheet">
+<link href="/css/modal.css" rel="stylesheet">
+<link href="/css/custom.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<!-- Favicon -->
+<link rel="shortcut icon" href="/assets/images/icono.png" type="image/x-icon">
+<link rel="icon" href="/assets/images/icono.png" type="image/x-icon">
+<!-- Responsive Meta -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader"></div>
+    <!-- End Preloader -->
+
+    {{ template_content }}
+
+</div>
+<!-- End PageWrapper -->
+
+<div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+</div>
+
+<!-- Core JS Scripts -->
+<script src="/js/jquery.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/appear.js"></script>
+<script src="/js/parallax.min.js"></script>
+<script src="/js/tilt.jquery.min.js"></script>
+<script src="/js/jquery.paroller.min.js"></script>
+<script src="/js/wow.js"></script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/backtotop.js"></script>
+<script src="/js/odometer.js"></script>
+<script src="/js/parallax-scroll.js"></script>
+<!-- Animation Scripts -->
+<script src="/js/gsap.min.js"></script>
+<script src="/js/SplitText.min.js"></script>
+<script src="/js/ScrollTrigger.min.js"></script>
+<script src="/js/ScrollToPlugin.min.js"></script>
+<script src="/js/ScrollSmoother.min.js"></script>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Additional JS Scripts -->
+<script src="/js/magnific-popup.min.js"></script>
+<script src="/js/jquery.meanmenu.min.js"></script>
+<script src="/js/nav-tool.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/modal.js"></script>
+
+<!-- Botón Flotante de WhatsApp -->
+<a href="{{ global:site_settings:whatsapp_float_url ?? 'https://wa.me/51997370339?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n' }}"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Contacto por WhatsApp">
+    <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+    <span class="whatsapp-tooltip">¡Más información al WhatsApp!</span>
+</a>
+
+<!-- Botón Flotante de Inscripción -->
+<a href="/inscripcion" class="inscription-float" aria-label="Inscripción en Línea">
+    <i class="fa-solid fa-file-signature inscription-icon"></i>
+    <span class="inscription-tooltip">¡Inscríbete Online!</span>
+</a>
+
+<!-- Modal de Login Flotante -->
+<div class="login-overlay" id="loginOverlay"></div>
+<div class="login-popup" id="loginPopup">
+    <button id="closeLoginPopup" class="close-login-btn" aria-label="Cerrar">&times;</button>
+    <div class="login-popup-header">
+        <div class="login-logo">
+            <img src="/assets/images/logo2.png" alt="CJP Penalito Logo">
+        </div>
+        <h4>Iniciar Sesión</h4>
+        <p>Ingresa a tu cuenta de Aula Virtual</p>
+    </div>
+    <form id="loginFormPopup">
+        <div class="form-group mb-3">
+            <label for="loginUser" class="login-label">Usuario o Correo</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                <input type="text" id="loginUser" class="form-control login-input" placeholder="ejemplo@correo.com" required>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="loginPass" class="login-label">Contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" id="loginPass" class="form-control login-input" placeholder="••••••••" required>
+                <button class="btn btn-outline-secondary border-start-0" type="button" id="toggleLoginPass" style="border-color: rgba(15, 19, 86, 0.12); border-left: none;">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+            </div>
+        </div>
+        <button type="submit" class="login-submit-btn">
+            Ingresar <i class="fa-solid fa-right-to-bracket ms-2"></i>
+        </button>
+        <div class="text-center mt-3">
+            <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
+        </div>
+    </form>
+</div>
+
+<script>
+function copyToClipboard(text, message) {
+    navigator.clipboard.writeText(text).then(() => {
+        Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: message, showConfirmButton: false, timer: 1500 });
+    }).catch(err => console.error('Error al copiar: ', err));
+}
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', function(e) {
+        const trigger = e.target.closest('.trigger-inscription');
+        if (trigger) {
+            e.preventDefault();
+            const plan = trigger.getAttribute('data-plan');
+            let url = '/inscripcion';
+            if (plan) { url += '?curso=' + encodeURIComponent(plan); }
+            window.location.href = url;
+        }
+    });
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value) {
+                Swal.fire({ title: '¡Suscripción Exitosa!', text: 'Gracias por suscribirte a nuestro boletín jurídico.', icon: 'success', confirmButtonText: 'Aceptar', confirmButtonColor: '#0f1356' });
+                emailInput.value = '';
+            }
+        });
+    }
+    const loginOverlay = document.getElementById('loginOverlay');
+    const loginPopup = document.getElementById('loginPopup');
+    const closeLoginBtn = document.getElementById('closeLoginPopup');
+    const toggleLoginPass = document.getElementById('toggleLoginPass');
+    const loginPassInput = document.getElementById('loginPass');
+    const loginForm = document.getElementById('loginFormPopup');
+    document.addEventListener('click', function (e) {
+        const trigger = e.target.closest('.login-btn-header, a[href$="/login"]');
+        if (trigger) {
+            e.preventDefault();
+            if (loginOverlay && loginPopup) { loginOverlay.classList.add('active'); loginPopup.classList.add('active'); }
+        }
+    });
+    function closeLogin() {
+        if (loginOverlay && loginPopup) { loginOverlay.classList.remove('active'); loginPopup.classList.remove('active'); }
+    }
+    if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeLogin);
+    if (loginOverlay) loginOverlay.addEventListener('click', closeLogin);
+    if (toggleLoginPass && loginPassInput) {
+        toggleLoginPass.addEventListener('click', function () {
+            const type = loginPassInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            loginPassInput.setAttribute('type', type);
+            const icon = toggleLoginPass.querySelector('i');
+            if (icon) { icon.classList.toggle('fa-eye'); icon.classList.toggle('fa-eye-slash'); }
+        });
+    }
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const user = document.getElementById('loginUser').value;
+            const pass = loginPassInput.value;
+            Swal.fire({ title: 'Validando credenciales...', text: 'Por favor, espera un momento.', icon: 'info', allowOutsideClick: false, showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    setTimeout(() => {
+                        if (user === 'demo' && pass === '123456') {
+                            Swal.fire({ title: '¡Acceso Concedido!', text: 'Bienvenido a la plataforma de Corporación Jurídica Penalito.', icon: 'success', confirmButtonText: 'Ir al Aula Virtual', confirmButtonColor: '#0f1356' }).then(() => { window.location.reload(); });
+                        } else {
+                            Swal.fire({ title: 'Error de Autenticación', text: 'El usuario o la contraseña ingresados son incorrectos.', icon: 'error', confirmButtonText: 'Intentar de nuevo', confirmButtonColor: '#dc3545' });
+                        }
+                    }, 1500);
+                }
+            });
+        });
+    }
+});
+</script>
+</body>
+</html>

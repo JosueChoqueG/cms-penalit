@@ -1,0 +1,90 @@
+{{ partial:header }}
+
+<section class="page-title" style="background-image:url(/assets/images/background/page-title.jpg)">
+    <div class="auto-container">
+        <h1 class="page-title_heading">{{ title }}</h1>
+        <ul class="page-breadcrumb">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li>Artículo</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Blog Detail Section -->
+<div class="sidebar-page-container py-5">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                <div class="blog-detail bg-white p-4 p-md-5 rounded shadow-sm border">
+                    {{ if featured_image }}
+                    <div class="image mb-4 rounded overflow-hidden">
+                        <img src="/{{ featured_image }}" alt="{{ title }}" class="w-100 h-auto" />
+                    </div>
+                    {{ /if }}
+
+                    <div class="d-flex align-items-center gap-3 text-muted small mb-3 border-bottom pb-3">
+                        <span><i class="fa-regular fa-calendar me-1 text-danger"></i> {{ date format="d \d\e F, Y" }}</span>
+                        <span><i class="fa-regular fa-user me-1 text-danger"></i> {{ author ?? 'Equipo CJP' }}</span>
+                        <span><i class="fa-regular fa-comment me-1 text-danger"></i> {{ comments_count ?? '0' }} comentarios</span>
+                    </div>
+
+                    <h2 class="fw-bold mb-4" style="color: var(--primary-blue);">{{ title }}</h2>
+
+                    <div class="blog-content" style="font-size: 16px; line-height: 1.8; color: #475569;">
+                        {{ if content }}
+                            {{ content }}
+                        {{ elseif excerpt }}
+                            <p class="lead">{{ excerpt }}</p>
+                        {{ else }}
+                            <p>El artículo completo estará disponible próximamente en nuestra plataforma académica.</p>
+                        {{ /if }}
+                    </div>
+
+                    <!-- Share / Navigation footer -->
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mt-5 pt-4 border-top">
+                        <div class="share-box d-flex align-items-center gap-2">
+                            <span class="fw-bold text-dark">Compartir:</span>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ permalink | urlencode }}" target="_blank" class="btn btn-outline-primary btn-sm rounded-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://api.whatsapp.com/send?text={{ title | urlencode }}%20{{ permalink | urlencode }}" target="_blank" class="btn btn-outline-success btn-sm rounded-circle"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ permalink | urlencode }}" target="_blank" class="btn btn-outline-info btn-sm rounded-circle"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                        <div>
+                            <a href="/blog" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-arrow-left me-1"></i> Volver al blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                <aside class="sidebar sticky-top" style="top: 100px;">
+                    <!-- Recent posts -->
+                    <div class="sidebar-widget bg-light p-4 rounded mb-4 shadow-sm border">
+                        <h4 class="sidebar-title fw-bold mb-3" style="color: var(--primary-blue);">Otros Artículos</h4>
+                        <div class="recent-posts">
+                            {{ collection:blog limit="4" id:not="{id}" }}
+                            <div class="recent-post-item mb-3 pb-3 border-bottom">
+                                <span class="small text-muted d-block"><i class="fa-regular fa-calendar-days me-1"></i> {{ date format="d M, Y" }}</span>
+                                <a href="{{ url }}" class="fw-bold text-dark d-block text-decoration-none mt-1 hover-primary">{{ title }}</a>
+                            </div>
+                            {{ /collection:blog }}
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp CTA Widget -->
+                    <div class="sidebar-widget text-white p-4 rounded mb-4 shadow-sm text-center" style="background: linear-gradient(135deg, #0d1b4b 0%, #1e3a8a 100%);">
+                        <i class="fa-brands fa-whatsapp display-4 text-success mb-3"></i>
+                        <h5 class="fw-bold text-white mb-2">Canal Académico WhatsApp</h5>
+                        <p class="small text-white-50 mb-3">Recibe artículos, jurisprudencia y actualizaciones en tu celular gratuitamente.</p>
+                        <a href="{{ global:site_settings:whatsapp_channel_url ?? '#' }}" target="_blank" class="btn btn-success fw-bold px-4 py-2">
+                            Unirme al Canal
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ partial:footer }}
