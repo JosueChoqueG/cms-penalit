@@ -1,5 +1,19 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # 1. Proteger archivos ocultos y de configuración sensible (.env, git, composer, etc.)
+    <FilesMatch "^\.(env|git|gitignore|yml|yaml|json|lock|editorconfig)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+    # 2. Bloquear acceso directo a directorios internos del sistema
+    RewriteRule ^(app|bootstrap|config|content|database|resources|routes|storage|tests|users|vendor)(/.*)?$ - [F,L]
+
+    # 3. Redirigir todo el tráfico entrante a la carpeta public/
+    RewriteCond %{REQUEST_URI} !^/public/
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
+
+# Desactivar listado de directorios
+Options -Indexes
