@@ -51,3 +51,4 @@ jobs:
           **/.env
           **/storage/**
           **/node_modules/**
+          **/vendor/**
